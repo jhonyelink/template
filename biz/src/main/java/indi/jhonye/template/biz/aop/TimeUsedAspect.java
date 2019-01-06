@@ -4,10 +4,7 @@
  */
 package indi.jhonye.template.biz.aop;
 
-import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 /**
@@ -18,17 +15,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class TimeUsedAspect {
 
-    @Pointcut("execution(*com.test.service.CacheDemoService.find*(..))")
+    //@Pointcut("execution(*com.test.service.CacheDemoService.find*(..))")
     public void pointCut(){
 
     }
 
-    @Before("execution(* findById*(..)) &&\" + \"args(id,..)")
+    //@Before("execution(* findById*(..)) &&\" + \"args(id,..)")
     public void beforeDo() {
 
     }
 
-    @Around("excudeService()")
+    //@Around("excudeService()")
     public void around() {
 
     }

@@ -17,7 +17,6 @@ import org.springframework.context.annotation.ImportResource;
  */
 @ImportResource("classpath:ApplicationContext.xml")
 @SpringBootApplication(
-        scanBasePackages = {"indi.jhonye.template"},
         exclude = {DataSourceAutoConfiguration.class})
 public class Application {
 

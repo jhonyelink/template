@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alibaba.fastjson.JSON;
+
 import indi.jhonye.template.biz.service.TestEchoService;
-import indi.jhonye.template.web.service.TestMysqlService;
+import indi.jhonye.template.biz.service.TestMysqlService;
+import indi.jhonye.template.dao.mapper.UserMapper;
+import indi.jhonye.template.dao.mapperobject.TestUserMO;
 
 /**
  * @author jhonye
@@ -26,15 +30,26 @@ public class TestRestController {
     @Autowired
     private TestMysqlService testMysqlService;
 
+    @Autowired
+    private UserMapper userMapper;
+
     @RequestMapping(value = "/echo", method = {RequestMethod.GET})
     public String echo() {
-        System.out.println(testMysqlService.echoJson("{1:1}"));
         return "template home!";
     }
 
     @RequestMapping(value = "/echoString", method = {RequestMethod.GET})
     public String echoString(@RequestParam String message) {
         return testEchoService.echoString(message);
+    }
+
+    @RequestMapping(value = "/select", method = {RequestMethod.GET})
+    public String select() {
+        TestUserMO testUserMO = new TestUserMO();
+        testUserMO.setUserName("jhonye");
+        testUserMO.setAge(22);
+        testUserMO.setExtension("extension ...");
+        return JSON.toJSONString(testMysqlService.getUser(1L));
     }
 
 }

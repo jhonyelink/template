@@ -22,6 +22,7 @@
         <module>service</module>
         <module>biz</module>
         <module>rpc</module>
+        <module>test</module>
     </modules>
 
     <properties>
@@ -32,9 +33,21 @@
         <project.version>1.0-SNAPSHOT</project.version>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
     <dependencyManagement>
         <dependencies>
             <!-- project self define -->
+            <dependency>
+                <groupId>indi.jhonye.template</groupId>
+                <artifactId>common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <dependency>
                 <groupId>indi.jhonye.template</groupId>
                 <artifactId>dao</artifactId>
@@ -43,6 +56,11 @@
             <dependency>
                 <groupId>indi.jhonye.template</groupId>
                 <artifactId>biz</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>indi.jhonye.template</groupId>
+                <artifactId>web</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

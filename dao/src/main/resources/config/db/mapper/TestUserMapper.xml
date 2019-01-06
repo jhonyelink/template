@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="indi.jhonye.template.dao.mapper.TestUserMapper">
+
+    <sql id="table">
+        `test_user`
+    </sql>
+
+    <sql id="all_columns">
+        id, <include refid="insert_columns"/>
+    </sql>
+
+    <sql id="insert_columns">
+        ctime, mtime, `username`, `age`, `extension`
+    </sql>
+
+    <insert id="insert" parameterType="indi.jhonye.template.dao.mapperobject.TestUserMO"
+            keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO
+        <include refid="table"/>(<include refid="insert_columns"/>)
+        VALUES(now(), now(), #{userName}, #{age}, #{extension})
+    </insert>
+
+    <delete id="deleteById" parameterType="java.lang.Long">
+        DELETE FROM <include refid="table"/> WHERE id=#{id} LIMIT 1
+    </delete>
+
+    <update id="update" parameterType="indi.jhonye.template.dao.mapperobject.TestUserMO">
+        UPDATE
+        <include refid="table"/>
+        SET
+        mtime=now()
+        <if test="userName">, `username`=#{userName}</if>
+        <if test="age">, `age`=#{age}</if>
+        <if test="extension">, `extension`=#{extension}</if>
+        WHERE
+        id=#{id}
+    </update>
+
+    <select id="getById" parameterType="java.lang.Long"
+            resultType="indi.jhonye.template.dao.mapperobject.TestUserMO">
+        SELECT 
+        <include refid="all_columns"/>
+        FROM
+        <include refid="table"/>
+        WHERE id=#{id}
+    </select>
+
+    <select id="getById" parameterType="indi.jhonye.template.dao.query.TestUserQuery"
+            resultType="indi.jhonye.template.dao.mapperobject.TestUserMO">
+        SELECT
+        <include refid="all_columns"/>
+        FROM
+        <include refid="table"/>
+        <where>
+            <if test="id != null">and id=#{id}</if>
+            <if test="idList != null and idList.size() gt 0">
+                and id in
+                <foreach collection="idList" index="index" item="id" open="(" separator="," close=")">
+                    #{id}
+                </foreach>
+            </if>
+            <if test="userName != null">and `username`=#{username}</if>
+            <if test="age != null">and `age`=#{age}</if>
+            <if test="extension != null">and `extension` like '%#{extension}%'</if>
+        </where>
+    </select>
+
+    <select id="getById" parameterType="indi.jhonye.template.dao.query.TestUserQuery"
+            resultType="java.lang.Long">
+        SELECT
+            COUNT(1)
+        FROM
+        <include refid="table"/>
+        <where>
+            <if test="id != null">and id=#{id}</if>
+            <if test="idList != null and idList.size() gt 0">
+                and id in
+                <foreach collection="idList" index="index" item="id" open="(" separator="," close=")">
+                    #{id}
+                </foreach>
+            </if>
+            <if test="userName != null">and `username`=#{username}</if>
+            <if test="age != null">and `age`=#{age}</if>
+            <if test="extension != null">and `extension` like '%#{extension}%'</if>
+        </where>
+    </select>
+
+</mapper>
