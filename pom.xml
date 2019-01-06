@@ -10,8 +10,8 @@
         <version>1.5.8.RELEASE</version>
     </parent>
 
-    <groupId>indi.jhonye.template</groupId>
-    <artifactId>template</artifactId>
+    <groupId>indi.jhonye.velocity.template</groupId>
+    <artifactId>velocity.template</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>

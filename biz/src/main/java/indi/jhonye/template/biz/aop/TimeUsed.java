@@ -15,9 +15,9 @@ import java.lang.annotation.Target;
  * @author jhonye
  * @version $Id: TimeUsed.java, v 0.1 2019-01-06 11:53 AM jhonye Exp $$
  */
-@Documented
 @Retention(value = RetentionPolicy.RUNTIME)
 @Target(value = {ElementType.METHOD})
+@Documented
 @Inherited
 public @interface TimeUsed {
 }

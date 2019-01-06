@@ -40,4 +40,10 @@ public class SeparatorConstant {
     public static final String VETICAL_S = "|";
     public static final char VETICAL_C = '|';
 
+    public static final String QUOTE_S = "\"";
+    public static final char QUOTE_C = '\"';
+
+    public static final String SINGLE_QUOTE_S = "\'";
+    public static final char SINGLE_QUOTE_C = '\'';
+
 }

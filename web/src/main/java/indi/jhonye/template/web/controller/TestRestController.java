@@ -24,7 +24,7 @@ public class TestRestController {
     @RequestMapping(value = "/echo", method = {RequestMethod.GET})
     public String echo() {
         System.out.println(testMysqlService.echoJson("{1:1}"));
-        return "template home!";
+        return "velocity.template home!";
     }
 
 }
