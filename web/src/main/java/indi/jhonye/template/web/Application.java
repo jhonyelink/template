@@ -45,7 +45,7 @@ public class Application {
         initSystemProperties();
 
         SpringApplication.run(Application.class, args);
-        System.out.println("velocity.template web started ...");
+        System.out.println("template web started ...");
     }
 
 }

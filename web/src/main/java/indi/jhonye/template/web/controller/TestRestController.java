@@ -7,8 +7,10 @@ package indi.jhonye.template.web.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import indi.jhonye.template.biz.service.TestEchoService;
 import indi.jhonye.template.web.service.TestMysqlService;
 
 /**
@@ -19,12 +21,20 @@ import indi.jhonye.template.web.service.TestMysqlService;
 public class TestRestController {
 
     @Autowired
+    private TestEchoService testEchoService;
+
+    @Autowired
     private TestMysqlService testMysqlService;
 
     @RequestMapping(value = "/echo", method = {RequestMethod.GET})
     public String echo() {
         System.out.println(testMysqlService.echoJson("{1:1}"));
-        return "velocity.template home!";
+        return "template home!";
+    }
+
+    @RequestMapping(value = "/echoString", method = {RequestMethod.GET})
+    public String echoString(@RequestParam String message) {
+        return testEchoService.echoString(message);
     }
 
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration  scan="false" debug="false">
+    <!-- scan: use hot load way to cron update the log config;-->
+    <!-- debug: show the logback inside log info;-->
+
+    <contextName>jhonye-template</contextName>
+
+    <!-- use application.properties context var init the logback var; -->
+    <springProperty scope="context" name="log.dir" source="template.log.dir"/>
+    <springProperty scope="context" name="log.level" source="template.log.level"/>
+
+    <!-- appender: console, output to stdout(screen) -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <encoder>
+            <Pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</Pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <root level="{log.level}">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+
+</configuration>
