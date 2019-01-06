@@ -17,6 +17,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
         exclude = {DataSourceAutoConfiguration.class})
 public class Application {
 
+    @Override
     public static void main(String[] args) throws Exception {
         SpringApplication.run(Application.class, args);
         System.out.println("template web started ...");

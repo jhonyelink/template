@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>indi.jhonye.template</groupId>
-            <artifactId>dao</artifactId>
+            <artifactId>biz</artifactId>
             <version>${module.dao.version}</version>
         </dependency>
         <dependency>
