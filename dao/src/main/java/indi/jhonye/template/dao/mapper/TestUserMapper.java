@@ -4,6 +4,8 @@
  */
 package indi.jhonye.template.dao.mapper;
 
+import org.apache.ibatis.annotations.Mapper;
+
 import indi.jhonye.template.dao.mapperobject.TestUserMO;
 import indi.jhonye.template.dao.query.TestUserQuery;
 
@@ -11,6 +13,7 @@ import indi.jhonye.template.dao.query.TestUserQuery;
  * @author jhonye
  * @version $Id: TestUseDAO.java, v 0.1 2019-01-04 12:31 AM jhonye Exp $$
  */
+@Mapper
 public interface TestUserMapper extends BaseMapper<TestUserQuery, TestUserMO> {
 
     /**

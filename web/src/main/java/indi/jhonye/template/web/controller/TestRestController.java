@@ -14,7 +14,6 @@ import com.alibaba.fastjson.JSON;
 
 import indi.jhonye.template.biz.service.TestEchoService;
 import indi.jhonye.template.biz.service.TestMysqlService;
-import indi.jhonye.template.dao.mapper.UserMapper;
 import indi.jhonye.template.dao.mapperobject.TestUserMO;
 
 /**
@@ -30,9 +29,6 @@ public class TestRestController {
     @Autowired
     private TestMysqlService testMysqlService;
 
-    @Autowired
-    private UserMapper userMapper;
-
     @RequestMapping(value = "/echo", method = {RequestMethod.GET})
     public String echo() {
         return "template home!";
@@ -45,11 +41,16 @@ public class TestRestController {
 
     @RequestMapping(value = "/select", method = {RequestMethod.GET})
     public String select() {
+        return JSON.toJSONString(testMysqlService.getUser(1L));
+    }
+
+    @RequestMapping(value = "/add", method = {RequestMethod.GET})
+    public String add() {
         TestUserMO testUserMO = new TestUserMO();
         testUserMO.setUserName("jhonye");
         testUserMO.setAge(22);
         testUserMO.setExtension("extension ...");
-        return JSON.toJSONString(testMysqlService.getUser(1L));
+        return JSON.toJSONString(testMysqlService.addUser(testUserMO));
     }
 
 }

@@ -11,9 +11,6 @@
 
     <import resource="classpath*:config/spring/spring-*.xml"/>
 
-    <context:component-scan base-package="indi.jhonye.template"/>
-    <context:annotation-config/>
-
     <bean id="configHolder"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>

@@ -13,7 +13,7 @@
     </sql>
 
     <sql id="insert_columns">
-        ctime, mtime, `username`, `age`, `extension`
+        ctime, mtime, `user_name`, `age`, `extension`
     </sql>
 
     <insert id="insert" parameterType="indi.jhonye.template.dao.mapperobject.TestUserMO"
@@ -32,7 +32,7 @@
         <include refid="table"/>
         SET
         mtime=now()
-        <if test="userName">, `username`=#{userName}</if>
+        <if test="userName">, `user_name`=#{userName}</if>
         <if test="age">, `age`=#{age}</if>
         <if test="extension">, `extension`=#{extension}</if>
         WHERE
@@ -48,7 +48,7 @@
         WHERE id=#{id}
     </select>
 
-    <select id="getById" parameterType="indi.jhonye.template.dao.query.TestUserQuery"
+    <select id="getByQuery" parameterType="indi.jhonye.template.dao.query.TestUserQuery"
             resultType="indi.jhonye.template.dao.mapperobject.TestUserMO">
         SELECT
         <include refid="all_columns"/>
@@ -62,13 +62,13 @@
                     #{id}
                 </foreach>
             </if>
-            <if test="userName != null">and `username`=#{username}</if>
+            <if test="userName != null">and `user_name`=#{username}</if>
             <if test="age != null">and `age`=#{age}</if>
             <if test="extension != null">and `extension` like '%#{extension}%'</if>
         </where>
     </select>
 
-    <select id="getById" parameterType="indi.jhonye.template.dao.query.TestUserQuery"
+    <select id="getTotal" parameterType="indi.jhonye.template.dao.query.TestUserQuery"
             resultType="java.lang.Long">
         SELECT
             COUNT(1)
@@ -82,7 +82,7 @@
                     #{id}
                 </foreach>
             </if>
-            <if test="userName != null">and `username`=#{username}</if>
+            <if test="userName != null">and `user_name`=#{username}</if>
             <if test="age != null">and `age`=#{age}</if>
             <if test="extension != null">and `extension` like '%#{extension}%'</if>
         </where>

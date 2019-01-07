@@ -6,18 +6,18 @@ package indi.jhonye.template.web;
 
 import java.util.Objects;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.context.annotation.ImportResource;
 
 /**
  * @author jhonye
  * @version $Id: Application.java, v 0.1 2019-01-03 10:02 PM jhonye Exp $$
  */
-@ImportResource("classpath:ApplicationContext.xml")
-@SpringBootApplication(
-        exclude = {DataSourceAutoConfiguration.class})
+//#@ImportResource("classpath:ApplicationContext.xml")
+//@EnableTransactionManagement
+@MapperScan(basePackages = {"indi.jhonye.template.dao"})
+@SpringBootApplication(scanBasePackages = {"indi.jhonye.template"})
 public class Application {
 
     // system env project name, Linux env
@@ -46,5 +46,4 @@ public class Application {
         SpringApplication.run(Application.class, args);
         System.out.println("template web started ...");
     }
-
 }

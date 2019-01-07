@@ -4,9 +4,13 @@
  */
 package indi.jhonye.template.biz.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
+
+import indi.jhonye.template.dao.mapper.TestUserMapper;
+import indi.jhonye.template.dao.mapperobject.TestUserMO;
 
 /**
  * @author jhonye
@@ -15,12 +19,17 @@ import com.alibaba.fastjson.JSON;
 @Service
 public class TestMysqlServiceImpl implements TestMysqlService{
 
-    //@Autowired
-    //private TestUserMapper testUserMapper;
+    @Autowired
+    private TestUserMapper testUserMapper;
 
     @Override
     public String getUser(Long id) {
-        return JSON.toJSONString(id);
+        return JSON.toJSONString(testUserMapper.getById(id));
+    }
+
+    @Override
+    public Integer addUser(TestUserMO testUserMO) {
+        return testUserMapper.insert(testUserMO);
     }
 
 }
